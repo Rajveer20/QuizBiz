@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet'>
+    <title>Forum</title>
+</head>
+<body>
+    <div align=center id="logo">
+        <img src="img/quizbiz.svg" alt="QuizBiz" height=75px>
+    </div>
+    <div class="top-bar">
+        <h1>
+            My Forum
+        </h1>
+    </div>
+    <div class="main">
+        <ol>
+        </ol>
+    </div>
+    <script src="data.js"></script>
+    <script>
+        console.log(threads);
+        var container = document.querySelector('ol');
+        for (let thread of threads) {
+            var html = `
+            <li class="row">
+                <a href="thread.html?${thread.id}">
+                    <h4 class="title">
+                        ${thread.title}
+                    </h4>
+                    <div class="bottom">
+                        <p class="timestamp">
+                            ${new Date(thread.date).toLocaleString()}
+                        </p>
+                        <p class="comment-count">
+                            ${thread.comments.length} comments
+                        </p>
+                    </div>
+                </a>
+            </li><hr>
+            `
+            container.insertAdjacentHTML('beforeend', html);
+        }
+    </script>
+    <style>
+        body {
+            margin: 10px 60px;
+            font-family: Montserrat;
+        }
+        a {
+            text-decoration: none;
+            color: #84C318;
+        }
+        h1{
+            font-family: Anton;
+            color: #DF2935;
+            padding: 10px;
+            margin: 0;
+        }
+
+        h4, ol{
+            margin: 0;
+        }
+        p {
+            margin: 5px 0;
+        }
+        .top-bar {
+            background-color: #FFAD05;
+            padding: 0 40px;
+            margin-top: 25px;
+            border-radius: 10px 10px 0px 0px;
+        }
+        .main {
+            background-color: #F7FFF7;
+            padding: 10px 15px;
+            border-radius: 0px 0px 10px 10px;
+        }
+        .row {
+            padding: 5px 0;
+        }
+        .bottom {
+            display: flex;
+            color: grey;
+            font-size: 12px;
+        }
+        .timestamp {
+            padding-right: 10px;
+        }
+    </style>
+</body>
+</html>
